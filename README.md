@@ -4,6 +4,41 @@
 
 A powerful SQL-based Retrieval Augmented Generation (RAG) service that bridges natural language and database queries. This service enables users to interact with databases using natural language, automatically generating and executing SQL queries while providing clear explanations of the results.
 
+## Demo
+
+Here's a quick walkthrough of how the service works:
+
+![Demo Screenshot 1](assets/screenshots/result1.png)
+![Demo Screenshot 2](assets/screenshots/result2.png)
+
+1. **Natural Language Input**: Users can ask questions in plain English about their battery storage system. In this example, we ask "List all locations with their battery counts"
+
+2. **Generated SQL Query**: 
+    The service automatically generates the appropriate SQL query:
+    ```sql
+    SELECT l.name AS location_name, COUNT(b.id) AS battery_count 
+    FROM locations l
+    LEFT JOIN batteries b ON l.id = b.location_id
+    GROUP BY l.id
+    ORDER BY l.name;
+    ```
+
+3. **Query Results**:
+    The results are displayed in a clear tabular format:
+    | Location | Battery Count |
+    |----------|--------------|
+    | Site 1   | 2            |
+    | Site 2   | 1            |
+
+4. **Intelligent Analysis**:
+    The service provides a detailed explanation of:
+    - How the SQL query addresses the question
+    - The query construction process:
+      - Selecting location names and counting batteries
+      - Using LEFT JOIN to include all locations
+      - Grouping results by location ID
+    - Clear interpretation of the results
+
 ## Features & Capabilities
 
 - Receives natural language queries.
