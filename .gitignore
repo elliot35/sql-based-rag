@@ -29,6 +29,7 @@ wheels/
 # Virtual Environment
 venv/
 ENV/
+rag/
 
 # IDE
 .idea/
