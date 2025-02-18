@@ -32,5 +32,11 @@ docker volume prune -f
 echo "🧼 Cleaning up unused networks..."
 docker network prune -f
 
+echo "🗑️ Removing MongoDB volumes..."
+docker volume rm battery-rag-service_mongo_data
+
+echo "🗑️ Removing PostgreSQL volumes..."
+docker volume rm battery-rag-service_postgres_data
+
 echo "✨ Cleanup complete! The environment has been completely reset."
 echo "To restart the services, run: ./start.sh" 

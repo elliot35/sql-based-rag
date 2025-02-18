@@ -1,42 +1,11 @@
 from typing import Any, List, Optional
 import os
-from backend.database.database import get_engine
+from backend.database.sql.database import get_engine
 from langchain.agents import create_sql_agent
 from langchain_community.agent_toolkits.sql.toolkit import SQLDatabaseToolkit
 from langchain_community.utilities.sql_database import SQLDatabase
 from langchain.llms import LlamaCpp
 from langchain_openai import ChatOpenAI
-
-def extract_sql_query(result: str) -> str:
-    """
-    Extract SQL query from the LLM agent's response.
-    
-    Args:
-        result (str): The full response from the LLM agent
-    
-    Returns:
-        str: The extracted SQL query
-    
-    Raises:
-        ValueError: If no SQL query is found in the response
-    """
-    # Find the start and end markers
-    start_marker = "FINAL QUERY START:"
-    end_marker = "FINAL QUERY END"
-    
-    start_idx = result.find(start_marker)
-    end_idx = result.find(end_marker)
-    
-    if start_idx == -1 or end_idx == -1:
-        raise ValueError("No SQL query found in the response")
-    
-    # Extract the query between markers
-    query = result[start_idx + len(start_marker):end_idx].strip()
-    
-    # Remove any markdown formatting
-    query = query.replace('```sql', '').replace('```', '').strip()
-    
-    return query
 
 def get_llm():
     """Initialize and return the configured LLM."""

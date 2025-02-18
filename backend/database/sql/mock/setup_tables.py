@@ -1,5 +1,5 @@
 from sqlalchemy import text
-from backend.database.database import get_engine
+from backend.database.sql.database import get_engine
 
 def create_tables():
     engine = get_engine("default")

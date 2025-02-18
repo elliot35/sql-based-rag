@@ -7,3 +7,9 @@ langchain-community==0.3.17
 llama-cpp-python==0.3.7
 langchain-openai==0.3.5
 python-dotenv==1.0.1
+sentence-transformers==3.4.1
+faiss-cpu==1.10.0  # Use faiss-gpu if GPU is available 
+# MongoDB requirements
+motor==3.7.0        # MongoDB async Python driver
+pymongo==4.11.1     # MongoDB Python driver
+pydantic==2.10.6     # For data validation
